@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package file_manager;
+
+service FileManager {
+    rpc PutFile(PutFileRequest) returns (PutFileResponse);
+    rpc GetFile(GetFileRequest) returns (GetFileResponse);
+}
+
+message PutFileRequest {
+    string fileName = 1;
+    string fileContext = 2;
+}
+
+message PutFileResponse {
+    string result = 1;
+}
+
+message GetFileRequest {
+    string fileName = 1;
+}
+
+message GetFileResponse {
+    string result = 1;
+}
