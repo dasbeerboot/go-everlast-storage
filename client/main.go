@@ -13,7 +13,12 @@ import (
 )
 
 func main() {
-	conn, err := grpc.Dial("localhost:8088", grpc.WithInsecure(), grpc.WithBlock())
+	conf, err := newConfig()
+	if err != nil {
+		log.Fatalf("fail to get config: %v", err)
+	}
+
+	conn, err := grpc.Dial(conf.serverAddr, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
